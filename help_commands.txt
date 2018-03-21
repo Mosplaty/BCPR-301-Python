@@ -25,14 +25,12 @@ help
 	List available commands with "help" or detailed help with "help cmd".
 
 load
-	Will load a file
-
 	Syntax:
-		load [filename] | -database
+		load [filename] or [database]
+		Load data from a specified location
 
 	:param arg:
 		filename: [string]
-		-database
 
 	:return:
 		File has been set
@@ -62,6 +60,7 @@ quit
 save
 	Syntax:
 		save [database]
+		Save the loaded dictionary to a database
 
 	:param arg:
 		database: [local | remote]
