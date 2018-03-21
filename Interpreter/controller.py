@@ -2,10 +2,8 @@ from database_handler import DatabaseHandler
 from filehandler import FileHandler
 from os import path
 from chart import Graph
-import doctest
 
 
-# Wesley
 class Controller:
     def __init__(self):
         self.db_handler = DatabaseHandler()
@@ -28,7 +26,6 @@ class Controller:
         """
         Read selected file
         """
-        # James' changes (13/03)
         result = self.filehandler.read()
         self.data = result
         print(result)
@@ -77,9 +74,3 @@ class Controller:
         if self.data is not None:
             return True
         return False
-
-
-# Controller shouldn't run doctests???
-# if __name__ == "__main__":
-#     c = Controller()
-#     doctest.testmod()

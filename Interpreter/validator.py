@@ -1,6 +1,5 @@
 import re
 from copy import deepcopy
-from datetime import datetime, date
 
 
 class Validator:
@@ -13,7 +12,6 @@ class Validator:
         self.sales = "^[\d]{3}$"
         self.BMI = "^(Normal|Overweight|Obesity|Underweight)$"
         self.salary = "^([\d]{2}|[\d]{3})$"
-        # James (new reg ex)
         self.birthday = "^(0[1-9]|[1-2][0-9]|3(0|1))(-|/)(0[1-9]|1[0-2])(-|/)(19|20)[0-9]{2}$"
 
     def check_empid(self, new_empid):
@@ -31,7 +29,6 @@ class Validator:
             return new_empid
         else:
             new_empid = False
-            # print("false id")
             return new_empid
 
     def check_gender(self, new_gender):
@@ -48,7 +45,6 @@ class Validator:
         if match:
             return new_gender
         else:
-            # James (new reg ex)
             match = re.match("^((m|M)ale)$", new_gender)
             if match:
                 new_gender = "M"
@@ -58,7 +54,6 @@ class Validator:
                 new_gender = "F"
                 return new_gender
             new_gender = False
-            # print("false new_gender")
             return new_gender
 
     def check_age(self, new_age):
@@ -77,7 +72,6 @@ class Validator:
             return new_age
         else:
             new_age = False
-            # print("false new_age")
             return new_age
 
     def check_sales(self, new_sales):
@@ -96,7 +90,6 @@ class Validator:
             return new_sales
         else:
             new_sales = False
-            # print("false new_sales")
             return new_sales
 
     def check_BMI(self, new_BMI):
@@ -113,13 +106,11 @@ class Validator:
         if match:
             return new_BMI
         else:
-            # James (new reg ex)
             match = re.match("^(normal|overweight|obesity|underweight)$", new_BMI)
             if match:
                 new_BMI = new_BMI.capitalize()
                 return new_BMI
             new_BMI = False
-            # print("false new_BMI")
             return new_BMI
 
     def check_salary(self, new_salary):
@@ -129,7 +120,6 @@ class Validator:
             return new_salary
         else:
             new_salary = False
-            # print("false new_salary")
             return new_salary
 
     @staticmethod
@@ -145,23 +135,20 @@ class Validator:
                 #new_birthday = False
                 #return new_birthday
         else:
-            # James (new reg ex)
             invalid_delims = "^(/|\\|.|:|;|,|_)$"
             match = re.match(invalid_delims, new_birthday)
             if match:
                 new_birthday.replace(invalid_delims, '-')
             new_birthday = False
-            # print("false bday")
             return new_birthday
 
     @staticmethod
     def checker(row):
         result = True
-        # try:
         for key, value in row.items():
             if key == "ID":
                 try:
-                    if value is None or a.check_empid(value) is False:
+                    if a.check_empid(value) is False:
                         result = False
                         return result
                     else:
@@ -170,7 +157,7 @@ class Validator:
                     print("TypeError")
             elif key == "Gender":
                 try:
-                    if value is None or a.check_gender(value) is False:
+                    if a.check_gender(value) is False:
                         result = False
                         return result
                     else:
@@ -178,39 +165,51 @@ class Validator:
                 except TypeError:
                     print("TypeError")
             elif key == "Age":
-                if value is None or a.check_age(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_age(value))
+                try:
+                    if a.check_age(value) is False:
+                        result = False
+                        return result
+                    else:
+                        a.push_value(key, a.check_age(value))
+                except TypeError:
+                    print("TypeError")
             elif key == "Sales":
-                if value is None or a.check_sales(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_sales(value))
+                try:
+                    if a.check_sales(value) is False:
+                        result = False
+                        return result
+                    else:
+                        a.push_value(key, a.check_sales(value))
+                except TypeError:
+                    print("TypeError")
             elif key == "BMI":
-                if value is None or a.check_BMI(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_BMI(value))
+                try:
+                    if a.check_BMI(value) is False:
+                        result = False
+                        return result
+                    else:
+                        a.push_value(key, a.check_BMI(value))
+                except TypeError:
+                    print("TypeError")
             elif key == "Salary":
-                if value is None or a.check_salary(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_salary(value))
+                try:
+                    if a.check_salary(value) is False:
+                        result = False
+                        return result
+                    else:
+                        a.push_value(key, a.check_salary(value))
+                except TypeError:
+                    print("TypeError")
             elif key == "Birthday":
-                if value is None or a.check_birthday(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_birthday(value))
-        # except TypeError:
-        #     print("Sorry, there was a type error for a record value")
+                try:
+                    if a.check_birthday(value) is False:
+                        result = False
+                        return result
+                    else:
+                        a.push_value(key, a.check_birthday(value))
+                except TypeError:
+                    print("TypeError")
 
-    # James' changes (13/03)
     @staticmethod
     def save_dict(loaded_dict):
         for empno, row in loaded_dict.items():

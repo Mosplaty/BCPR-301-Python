@@ -2,7 +2,6 @@ from mysql.connector import connect, cursor
 from database_abstract import DatabaseAbstract
 
 
-# Wesley
 class DBRemote(DatabaseAbstract):
     # sadly, Wesley, even I don't like this, breaks my soul
     # The default values need to be set so the ABC can still run
@@ -22,19 +21,16 @@ class DBRemote(DatabaseAbstract):
 
         self.cursor = self.connection.cursor()
 
-    # Wesley
     def insert_record(self, value):
         """Insert a single record into the local database"""
         sql = "insert into employee(personal) values(%(value)s)"
         val = {'value': value}
         self.cursor.execute(sql, val)
 
-    # Wesley
     def delete_record(self, key):
         """Delete a single record that matches the key"""
         self.cursor.execute("delete from employee where key = %s", key)
 
-    # Wesley
     def update_record(self, key, value):
         """Rewrite a record that already exists"""
         record = (value, key)

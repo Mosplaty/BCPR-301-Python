@@ -1,7 +1,6 @@
 from cmd import Cmd
 from controller import Controller
-from os import path, chdir, getcwd
-from re import match
+from os import path
 
 
 class Shell(Cmd):
@@ -14,11 +13,10 @@ class Shell(Cmd):
         super().__init__()
         self.controller = Controller()
         self.intro = "Welcome to our custom Interpreter shell. Type help or ? to list commands.\n"
-        self.prompt = '(Interpreter) '
+        self.prompt = '>>> '
         self.file = None
         self.directory = path.realpath(path.curdir)
 
-    # Wesley
     def do_cd(self, arg):
         """
         Syntax:
@@ -40,7 +38,6 @@ class Shell(Cmd):
             elif path.isdir(path.realpath(path.relpath(path.join(self.directory, line)))):
                 self.directory = path.realpath(path.relpath(path.join(self.directory, line)))
                 print(self.directory)
-                print("else")
             else:
                 print("Not a valid directory")
         except ValueError:
@@ -120,7 +117,6 @@ class Shell(Cmd):
             The graph
         """
         commands = arg.split(" ")
-        # James exception handling
         if self.controller.check_data():
             try:
                 if commands[0] == "pie" or commands[0] == "scatter" or commands[0] == "bar":
@@ -168,7 +164,6 @@ class Shell(Cmd):
         print("Quitting ......")
         return True
 
-    # Wesley
     def do_pwd(self, arg):
         """
         Syntax:
@@ -181,7 +176,7 @@ class Shell(Cmd):
         :return:
             The current working directory
         """
-        print(path.split(self.directory)[0])
+        print(self.directory)
 
     def do_save(self, arg):
         """
