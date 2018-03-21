@@ -49,6 +49,7 @@ class Shell(Cmd):
         """
         Syntax:
             load [filename] or [database]
+            Load data from a specified location
 
         :param arg:
             filename: [string]
@@ -180,8 +181,13 @@ class Shell(Cmd):
 
     def do_save(self, arg):
         """
-        Syntax: save [database]
+        Syntax:
+            save [database]
+            Save the loaded dictionary to a database
+
         :param arg:
+            database: [local | remote]
+
         :return:
         """
         commands = arg.split(" ")
