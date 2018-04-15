@@ -17,14 +17,15 @@ class TestValidator(TestCase):
         """
         expected = {0: {"ID": "A231", "Gender": "M", "Age": "23", "Sales": "245", "BMI": "Normal", "Salary": "20",
                         "Birthday": "24/06/1994"},
-                    1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "Normal", "Salary": "200",
+                    1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "290", "BMI": "Normal", "Salary": "200",
                         "Birthday": "24/06/1992"}}
         data = {0: {"ID": "A231", "Gender": "Male", "Age": "23", "Sales": "245", "BMI": "normal", "Salary": "20",
                     "Birthday": "24/06/1994"},
-                1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "normal", "Salary": "200",
+                1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "290", "BMI": "normal", "Salary": "200",
                     "Birthday": "24/06/1992"}}
         result = Validator.save_dict(data)
         self.assertEqual(expected, result)
+        result.clear()
 
     def test_invalid_value_ID(self):
         """
