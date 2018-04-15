@@ -1,7 +1,7 @@
-from database_local import DBLocal
-from database_remote import DBRemote
-from pickler import Pickler
-from unpickler import Unpickler
+from Interpreter.database_local import DBLocal
+from Interpreter.database_remote import DBRemote
+from Interpreter.pickler import Pickler
+from Interpreter.unpickler import Unpickler
 
 
 class DatabaseHandler:

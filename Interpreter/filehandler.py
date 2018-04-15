@@ -3,7 +3,7 @@ from abc import ABCMeta, abstractmethod
 from csv import DictReader as CSVDictReader
 from openpyxl import load_workbook
 from datetime import datetime
-from validator import Validator
+from Interpreter.validator import Validator
 
 
 class FileHandler:

@@ -1,5 +1,5 @@
 from mysql.connector import connect, cursor
-from database_abstract import DatabaseAbstract
+from Interpreter.database_abstract import DatabaseAbstract
 
 
 class DBRemote(DatabaseAbstract):

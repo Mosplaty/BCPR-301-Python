@@ -1,5 +1,5 @@
-from cmd import Cmd
-from controller import Controller
+from cmd import Cmd  # pragma; no cover
+from Interpreter.controller import Controller
 from os import path
 
 
