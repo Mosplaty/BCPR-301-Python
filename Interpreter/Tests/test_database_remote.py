@@ -1,4 +1,4 @@
-from ..database_remote import DBRemote
+from Interpreter.database_remote import DBRemote
 from unittest import TestCase
 
 

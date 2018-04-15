@@ -1,4 +1,4 @@
-from ..validator import Validator
+from Interpreter.validator import Validator
 from unittest import TestCase
 
 

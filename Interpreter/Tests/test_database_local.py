@@ -1,4 +1,4 @@
-from ..database_local import DBLocal
+from Interpreter.database_local import DBLocal
 from unittest import TestCase
 
 

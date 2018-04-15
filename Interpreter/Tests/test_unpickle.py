@@ -1,6 +1,6 @@
-from ..database_local import DBLocal
-from ..pickler import Pickler
-from ..unpickler import Unpickler
+from Interpreter.database_local import DBLocal
+from Interpreter.pickler import Pickler
+from Interpreter.unpickler import Unpickler
 from unittest import TestCase
 
 
