@@ -129,9 +129,9 @@ class Validator:
         else:
             invalid_delims = "^(/|\\|.|:|;|,|_)$"
             # todo: change match to search() ...  or something
-            match = re.match(invalid_delims, new_birthday)
+            match = re.search(invalid_delims, new_birthday)
             if match:
-                new_birthday.replace(invalid_delims, '-')
+                new_birthday.replace(invalid_delims, '/')
             else:
                 new_birthday = False
                 return new_birthday
