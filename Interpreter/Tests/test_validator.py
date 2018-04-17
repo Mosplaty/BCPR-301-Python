@@ -212,3 +212,16 @@ class TestValidator(TestCase):
                 "Birthdayyyyyyyy": "24/06/1992"}}
         result = Validator.save_dict(data)
         self.assertEqual(expected, result)
+
+    def test_invalid_value_birthday_replace(self):
+        """
+        Tests validating data containing an invalid row value for Birthday
+        """
+        expected = {0: {"ID": "A231", "Gender": "M", "Age": "23", "Sales": "245", "BMI": "Normal", "Salary":
+                    "20", "Birthday": "24/06/1994"}}
+        data = {0: {"ID": "A231", "Gender": "M", "Age": "23", "Sales": "245", "BMI": "Normal", "Salary":
+                    "20", "Birthday": "24_06_1994"}}
+        result = Validator.save_dict(data)
+        print(expected)
+        print(result)
+        self.assertEqual(expected, result)
