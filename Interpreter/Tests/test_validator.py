@@ -29,7 +29,6 @@ class TestValidator(TestCase):
                     "Birthday": "24/06/1987"}}
         result = Validator.save_dict(data)
         self.assertEqual(expected, result)
-        result.clear()
 
     def test_invalid_value_ID(self):
         """
