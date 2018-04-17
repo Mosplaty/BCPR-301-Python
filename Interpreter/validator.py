@@ -125,18 +125,16 @@ class Validator:
     def check_birthday(self, new_birthday):
         match = re.match(self.birthday, new_birthday)
         if match:
-            #if self.temp_dict["Age"] == (date.today() - (datetime.strptime(new_birthday, "%d-%m-%Y").date())):
-                return new_birthday
-            #else:
-                #new_birthday = False
-                #return new_birthday
+            return new_birthday
         else:
             invalid_delims = "^(/|\\|.|:|;|,|_)$"
+            # todo: change match to search() ...  or something
             match = re.match(invalid_delims, new_birthday)
             if match:
                 new_birthday.replace(invalid_delims, '-')
-            new_birthday = False
-            return new_birthday
+            else:
+                new_birthday = False
+                return new_birthday
 
     @staticmethod
     def checker(row):
