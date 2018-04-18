@@ -1,5 +1,6 @@
 from Interpreter.validator import Validator
 from unittest import TestCase
+from datetime import datetime
 
 
 class TestValidator(TestCase):
@@ -215,13 +216,20 @@ class TestValidator(TestCase):
 
     def test_invalid_value_birthday_replace(self):
         """
-        Tests validating data containing an invalid row value for Birthday
+        Tests validating data containing an invalid delimiter value for Birthday
         """
         expected = {0: {"ID": "A231", "Gender": "M", "Age": "23", "Sales": "245", "BMI": "Normal", "Salary":
                     "20", "Birthday": "24/06/1994"}}
         data = {0: {"ID": "A231", "Gender": "M", "Age": "23", "Sales": "245", "BMI": "Normal", "Salary":
                     "20", "Birthday": "24_06_1994"}}
         result = Validator.save_dict(data)
-        print(expected)
-        print(result)
+        self.assertEqual(expected, result)
+
+    def test_xlsx_date(self):
+        """
+        Tests validating data containing a date in xlsx format
+        """
+        expected = "24/05/1993"
+        data = datetime(1993, 5, 24)
+        result = Validator.xlsx_date(data)
         self.assertEqual(expected, result)
