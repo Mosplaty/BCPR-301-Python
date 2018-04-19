@@ -5,6 +5,7 @@ from test_pickle import TestPickler
 from test_database_remote import TestRemote
 from test_database_local import TestLocal
 from test_database_handler import TestDBHandler
+from test_filehandler import TestFileHandler
 
 
 def suite():
@@ -15,6 +16,7 @@ def suite():
     testsuite.addTest(makeSuite(TestRemote))
     testsuite.addTest(makeSuite(TestLocal))
     testsuite.addTest(makeSuite(TestDBHandler))
+    testsuite.addTest(makeSuite(TestFileHandler))
     return testsuite
 
 
