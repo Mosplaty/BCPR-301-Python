@@ -11,6 +11,8 @@ class FileHandler:
         self.filename = file_name
         self.file_type = None
 
+    # Unused??
+    # and doesn't work!?!?
     def file_exist(self):
         """
         Checks if the current file exists
@@ -115,23 +117,27 @@ class FileTypeTXT(FileTypeAbstract):
         :param filename is the file where the values exist
         >>> read("Saves/data.txt")
         """
+        file = open(filename, 'r')
+        data = dict()
         empno = 0
         try:
-            file = open(filename, 'r')
-            print(file)
-            for line in file:
-                print(line)
+
+            for line in file: # FIRST LOOP
+                rows = line.split(";")
                 dictionary = dict()
-                rows = line.split(":")
                 for row in rows:
                     if len(row.split("=")) == 2:
                         key = row.split("=")[0]
                         value = row.split("=")[1]
                         value = value.rstrip('\n')
                         dictionary[key] = value
+                        data[empno] = dictionary
                     else:
                         print("File error")
-                        return False
-            return dictionary
-        finally:
-            print("something weird happened... guys pls send help")
+                        raise ValueError
+                empno += 1
+            result = Validator.save_dict(data)
+            return result
+
+        except Exception as e:
+            print(e)
