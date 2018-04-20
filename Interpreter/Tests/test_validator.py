@@ -7,10 +7,9 @@ class TestValidator(TestCase):
 
     def setUp(self):
         self.validator = Validator()
-        self.maxDiff = None
 
     def tearDown(self):
-        self.validator = None
+        del self.validator
 
     def test_valid_data(self):
         """
@@ -28,7 +27,7 @@ class TestValidator(TestCase):
                     "Birthday": "24/06/1992"},
                 2: {"ID": "A233", "Gender": "Female", "Age": "30", "Sales": "222", "BMI": "overweight", "Salary": "200",
                     "Birthday": "24/06/1987"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_value_ID(self):
@@ -41,7 +40,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A2232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_value_gen(self):
@@ -54,7 +53,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "Msakjnb", "Age": "25", "Sales": "270", "BMI": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_value_age(self):
@@ -68,7 +67,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
             1: {"ID": "A232", "Gender": "M", "Age": "jhfbkjsa", "Sales": "270", "BMI": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_value_sales(self):
@@ -81,7 +80,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "dsajbdk", "BMI": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_value_bmi(self):
@@ -94,7 +93,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "insane", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_value_salary(self):
@@ -107,7 +106,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "normal", "Salary": "dajhsbjfa",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_value_birthday(self):
@@ -120,7 +119,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "normal", "Salary": "200",
                 "Birthday": "abcdefg"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_key_ID(self):
@@ -133,7 +132,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"IyD": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_key_gen(self):
@@ -146,7 +145,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Genderrrr": "M", "Age": "25", "Sales": "270", "BMI": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_key_age(self):
@@ -159,7 +158,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Ageeee": "25", "Sales": "270", "BMI": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_key_sales(self):
@@ -172,7 +171,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Age": "25", "Saylesz": "270", "BMI": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_key_bmi(self):
@@ -185,7 +184,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMIs": "normal", "Salary": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_key_salary(self):
@@ -198,7 +197,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "normal", "Salaryyyyy": "200",
                 "Birthday": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_key_birthday(self):
@@ -211,7 +210,7 @@ class TestValidator(TestCase):
                 "Birthday": "24/06/1994"},
                 1: {"ID": "A232", "Gender": "M", "Age": "25", "Sales": "270", "BMI": "normal", "Salary": "200",
                 "Birthdayyyyyyyy": "24/06/1992"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_invalid_value_birthday_replace(self):
@@ -222,7 +221,7 @@ class TestValidator(TestCase):
                     "20", "Birthday": "24/06/1994"}}
         data = {0: {"ID": "A231", "Gender": "M", "Age": "23", "Sales": "245", "BMI": "Normal", "Salary":
                     "20", "Birthday": "24_06_1994"}}
-        result = Validator.save_dict(data)
+        result = self.validator.save_dict(data)
         self.assertEqual(expected, result)
 
     def test_xlsx_date(self):
@@ -231,5 +230,5 @@ class TestValidator(TestCase):
         """
         expected = "24/05/1993"
         data = datetime(1993, 5, 24)
-        result = Validator.xlsx_date(data)
+        result = self.validator.xlsx_date(data)
         self.assertEqual(expected, result)
