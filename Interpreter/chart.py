@@ -11,7 +11,7 @@ class GraphType(metaclass=ABCMeta):
 
     @abstractmethod
     def draw_graph(self, x_key, y_key, title):
-        pass
+        pass  # pragma: no cover
 
     def set_criteria(self, key, statistic=None):
         """

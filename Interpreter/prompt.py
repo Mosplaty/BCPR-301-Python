@@ -1,4 +1,4 @@
-from cmd import Cmd  # pragma; no cover
+from cmd import Cmd
 from Interpreter.controller import Controller
 from os import path
 

@@ -1,7 +1,7 @@
 from Interpreter.database_handler import DatabaseHandler
 from Interpreter.filehandler import FileHandler
+from Interpreter.chart import Graph
 from os import path
-from chart import Graph
 
 
 class Controller:
