@@ -6,6 +6,8 @@ from test_database_remote import TestRemote
 from test_database_local import TestLocal
 from test_database_handler import TestDBHandler
 from test_filehandler import TestFileHandler
+from test_prompt import TestPrompt
+from test_chart import TestChart
 
 
 def suite():
@@ -17,6 +19,8 @@ def suite():
     testsuite.addTest(makeSuite(TestLocal))
     testsuite.addTest(makeSuite(TestDBHandler))
     testsuite.addTest(makeSuite(TestFileHandler))
+    testsuite.addTest(makeSuite(TestPrompt))
+    testsuite.addTest(makeSuite(TestChart))
     return testsuite
 
 

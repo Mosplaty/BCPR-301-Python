@@ -18,9 +18,20 @@ class TestChart(TestCase):
     def tearDown(self):
         self.graph = None
 
-    # Ughhhhhhhhhhhh
+    def test_chart_scatter(self):
+        self.graph.set_data(self.testArray, "scatter", "expected_test\\scatter")
+        self.graph.set_criteria("Gender", "M")
+        self.graph.set_keys("Salary", "Sales")
+        result = self.graph.draw("Salary", "Sales", "Title")
+
+    def test_chart_pie(self):
+        self.graph.set_data(self.testArray, "pie", "expected_test\\pie")
+        self.graph.set_criteria("Gender", "M")
+        self.graph.set_keys("Salary", "Sales")
+        result = self.graph.draw("Salary", "Sales", "Title")
+
     def test_chart_bar(self):
-        self.graph.set_data(self.testArray, "pie", "expected_test")
-        self.graph.set_criteria("Gender", "Male")
+        self.graph.set_data(self.testArray, "bar", "expected_test\\bar")
+        self.graph.set_criteria("Gender", "M")
         self.graph.set_keys("Salary", "Sales")
         result = self.graph.draw("Salary", "Sales", "Title")
