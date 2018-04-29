@@ -100,7 +100,7 @@ class FileTypeXLSX(FileTypeAbstract):
                         record[keys[row_num]] = valid
                     row_num += 1
                 if a_row > 1:
-                    data[empno] = record
+                    data[empno-1] = record
                 empno += 1
             result = Validator.save_dict(data)
         except PermissionError:
