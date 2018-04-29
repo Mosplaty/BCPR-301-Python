@@ -39,5 +39,3 @@ class TestLocal(TestCase):
         self.db.insert_dictionary(data)
         result = self.db.get_db()
         self.assertEqual(expected, result)
-
-

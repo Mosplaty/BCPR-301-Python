@@ -12,14 +12,14 @@ from test_chart import TestChart
 
 def suite():
     testsuite = TestSuite()
-    testsuite.addTest(makeSuite(TestValidator))
-    testsuite.addTest(makeSuite(TestUnpickler))
-    testsuite.addTest(makeSuite(TestPickler))
     testsuite.addTest(makeSuite(TestRemote))
     testsuite.addTest(makeSuite(TestLocal))
     testsuite.addTest(makeSuite(TestDBHandler))
-    testsuite.addTest(makeSuite(TestFileHandler))
+    testsuite.addTest(makeSuite(TestUnpickler))
+    testsuite.addTest(makeSuite(TestPickler))
     testsuite.addTest(makeSuite(TestPrompt))
+    testsuite.addTest(makeSuite(TestFileHandler))
+    testsuite.addTest(makeSuite(TestValidator))
     testsuite.addTest(makeSuite(TestChart))
     return testsuite
 

@@ -41,9 +41,20 @@ class TestRemote(TestCase):
         data = {1: 'dskjhflkasdjlfkj23543', 2: "dskjhflkasdjlasdfdsafkj23543"}
         self.db.insert_dictionary(data)
         result = self.db.get_db()
-        # print(result)
         self.assertEqual(expected, result)
 
+    # def test_db_update(self):
+    #     expected = [(1, b'dskjhflkasdjlfkj2354'), (2, b'dskjhflkasdjlasdfdsafkj23543')]
+    #     data = {1: 'dskjhflkasdjlfkj23543', 2: "dskjhflkasdjlasdfdsafkj23543"}
+    #     self.db.insert_dictionary(data)
+    #     self.db.update_record('1', 'dskjhflkasdjlfkj2354')
+    #     result = self.db.get_db()
+    #     self.assertEqual(result, expected)
 
-
-
+    # def test_db_delete(self):
+    #     expected = [(1, b'dskjhflkasdjlfkj23543'), (2, b'dskjhflkasdjlasdfdsafkj23543')]
+    #     data = {1: 'dskjhflkasdjlfkj23543', 2: "dskjhflkasdjlasdfdsafkj23543"}
+    #     self.db.insert_dictionary(data)
+    #     self.db.delete_record('2')
+    #     result = self.db.get_db()
+    #     self.assertEqual(expected, result)
