@@ -8,11 +8,11 @@ class DatabaseAbstract(metaclass=ABCMeta):
 
     @abstractmethod
     def connect(self):
-        pass
+        pass  # pragma: no cover
 
     @abstractmethod
     def create_table(self):
-        pass
+        pass  # pragma: no cover
 
     def drop_table(self):
         """Used for testing, will drop table to clear data"""
@@ -44,13 +44,13 @@ class DatabaseAbstract(metaclass=ABCMeta):
 
     @abstractmethod
     def insert_record(self, value):
-        pass
+        pass  # pragma: no cover
 
     @abstractmethod
     def delete_record(self, key):
-        pass
+        pass  # pragma: no cover
 
     @abstractmethod
     def update_record(self, key, value):
-        pass
+        pass  # pragma: no cover
 

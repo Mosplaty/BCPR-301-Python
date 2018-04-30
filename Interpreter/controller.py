@@ -20,7 +20,7 @@ class Controller:
             self.filehandler.set_file_type()
             return True
         else:
-            return False
+            return False  # pragma: no cover
 
     def validate(self):
         """
@@ -56,10 +56,10 @@ class Controller:
         self.graph.set_data(data, graph_type, filename)
 
     def get_local(self):
-        self.data = self.db_handler.get_local()
+        self.data = self.db_handler.get_local()  # pragma: no cover
 
     def get_remote(self):
-        self.data = self.db_handler.get_remote()
+        self.data = self.db_handler.get_remote()  # pragma: no cover
 
     def set_criteria(self, criteria_1, criteria_2=None):
         self.graph.set_criteria(criteria_1, criteria_2)

@@ -29,12 +29,12 @@ class DBRemote(DatabaseAbstract):
 
     def delete_record(self, key):
         """Delete a single record that matches the key"""
-        self.cursor.execute("delete from employee where key = %s", key)
+        self.cursor.execute("delete from employee where empno = " + key)
 
     def update_record(self, key, value):
         """Rewrite a record that already exists"""
         record = (value, key)
-        self.cursor.execute("update employee set personal = %s where key = %s", record)
+        self.cursor.execute("update employee set personal = %s where empno = %s", record)
 
     def create_table(self):
         """ Create a table that will be created in the local db

@@ -16,12 +16,12 @@ class DBLocal(DatabaseAbstract):
 
     def delete_record(self, key):
         """Delete a single record that matches the key"""
-        self.cursor.execute("delete from employee where key = ?", key)
+        self.cursor.execute("delete from employee where empno = ?", key)
 
     def update_record(self, key, value):
         """Rewrite a record that already exists"""
         record = (value, key)
-        self.cursor.execute("update employee set personal = ? where key = ?", record)
+        self.cursor.execute("update employee set personal = ? where empno = ?", record)
 
     def create_table(self):
         """ Create a table that will be created in the local db

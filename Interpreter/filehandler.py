@@ -4,6 +4,7 @@ from csv import DictReader as CSVDictReader
 from openpyxl import load_workbook
 from datetime import datetime
 from Interpreter.validator import Validator
+from path import Path
 
 
 class FileHandler:
@@ -11,16 +12,14 @@ class FileHandler:
         self.filename = file_name
         self.file_type = None
 
-    # Unused??
-    # and doesn't work!?!?
     def file_exist(self):
         """
         Checks if the current file exists
         """
-        if self.filename.exists():
+        if Path(self.filename).exists():
             return True
         else:
-            return False
+            return False  # pragma: no cover
 
     def set_file_type(self):
         """
@@ -43,7 +42,7 @@ class FileHandler:
 class FileTypeAbstract(metaclass=ABCMeta):
     @abstractmethod
     def read(self, filename):
-        pass
+        pass  # pragma: no cover
 
 
 class FileTypeCSV(FileTypeAbstract):
