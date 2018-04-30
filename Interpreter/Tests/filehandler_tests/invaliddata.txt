@@ -1,0 +1,1 @@
+ID=A234=G234;Gender=F;Age=21;Sales=001;BMI=Normal;Salary=23;Birthday=01/01/1996
