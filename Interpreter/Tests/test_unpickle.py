@@ -5,7 +5,6 @@ from unittest import TestCase
 
 
 class TestUnpickler(TestCase):
-
     def setUp(self):
         self.local = DBLocal()
         self.local.connect()
@@ -17,6 +16,9 @@ class TestUnpickler(TestCase):
         self.local = None
 
     def test_unpickle_dict(self):
+        """
+        Unpickles and checks against expected
+        """
         expected = {1: {"1ID": "A23", "Gender": "Male", "Age": 22, "Sales": 2445, "BMI": "normal", "salary": 20,
                         "Birthday": "24/06/1995"},
                     2: {"IhD": "A2f3", "Gender": "Male", "Age": 23, "Sales": 2565, "BMI": "normal", "salary": 20,

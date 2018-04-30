@@ -61,9 +61,41 @@ class TestPrompt(TestCase):
                 self.prompt.do_load("-database")
         self.assertEqual(output, self.expected)
 
+    def test_load_db_local_exists(self):
+        self.expected = ['Data has been loaded']
+        self.prompt.do_load('filehandler_tests/data.csv')
+        user_input = ['test']
+        with patch('builtins.input', side_effect=user_input):
+            self.prompt.do_save("local")
+        user_input = ['local', 'test']
+        with Capturing() as output:
+            with patch('builtins.input', side_effect=user_input):
+                self.prompt.do_load("-database")
+        self.assertEqual(output, self.expected)
+
     def test_load_db_remote(self):
         self.expected = ['No data found']
         user_input = ['remote', 'localhost', 'root', '', 'test']
+        with Capturing() as output:
+            with patch('builtins.input', side_effect=user_input):
+                self.prompt.do_load("-database")
+        self.assertEqual(output, self.expected)
+
+    def test_load_db_remote_exists(self):
+        self.expected = ['Data has been loaded']
+        self.prompt.do_load('filehandler_tests/data.csv')
+        user_input = ['localhost', 'root', '', 'test']
+        with patch('builtins.input', side_effect=user_input):
+            self.prompt.do_save("remote")
+        user_input = ['remote', 'localhost', 'root', '', 'test']
+        with Capturing() as output:
+            with patch('builtins.input', side_effect=user_input):
+                self.prompt.do_load("-database")
+        self.assertEqual(output, self.expected)
+
+    def test_load_db_invalid(self):
+        self.expected = ['invalid database type']
+        user_input = ['thingy', 'test']
         with Capturing() as output:
             with patch('builtins.input', side_effect=user_input):
                 self.prompt.do_load("-database")
@@ -181,7 +213,6 @@ class TestPrompt(TestCase):
         with Capturing() as output:
             with patch('builtins.input', side_effect=user_input):
                 self.prompt.do_graph("pie test")
-        print(output)
         self.assertEqual(output, self.expected)
 
     def test_graph_2(self):
@@ -193,5 +224,4 @@ class TestPrompt(TestCase):
         with Capturing() as output:
             with patch('builtins.input', side_effect=user_input):
                 self.prompt.do_graph("pie test")
-        print(output)
         self.assertEqual(output, self.expected)
