@@ -16,7 +16,6 @@ class DatabaseHandler:
         def wrapper(*args):
             db = args[0].local_connection
             args[0].local.connect(db)
-            # if args[0].local_connection == ":memory:":
             args[0].local.create_table()
             r = f(*args)
             args[0].local.commit()
@@ -47,26 +46,22 @@ class DatabaseHandler:
         """Insert values into both the local and remote"""
         pickled = Pickler.pickle_dictionary_values(dictionary)
         self.local.insert_dictionary(pickled)
-        # print(self.local.get_db())
 
     @remote_decorator
     def insert_remote_dict(self, dictionary):
         """Insert values into both the local and remote"""
         pickled = Pickler.pickle_dictionary_values(dictionary)
         self.remote.insert_dictionary(pickled)
-        # print(self.remote.get_db())
 
     @local_decorator
     def get_local(self):
-        unpickle = Unpickler.unpickle_dictionary(self.local.get_db())
+        unpickle = Pickler.unpickle_dictionary(self.local.get_db())
         return unpickle
-        # print(unpickle)
 
     @remote_decorator
     def get_remote(self):
-        unpickle = Unpickler.unpickle_dictionary(self.remote.get_db())
+        unpickle = Pickler.unpickle_dictionary(self.remote.get_db())
         return unpickle
-        # print(unpickle)
 
     @local_decorator
     def drop_local_table(self):
