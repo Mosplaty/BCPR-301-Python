@@ -1,4 +1,6 @@
 from pickle import dumps
+from pickle import Unpickler as Unpick
+from io import BytesIO
 
 
 class Pickler:
