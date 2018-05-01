@@ -8,3 +8,5 @@ Commits:
 3) Replace calls to unpickler.unpickle_dictionary() with pickler.unpickle_dictionary() from database_handler.py
 
 4) Remove import unpickler statement from database_handler.py
+
+5) Remove unpickler.py from package
