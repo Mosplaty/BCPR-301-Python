@@ -10,3 +10,5 @@ Commits:
 4) Remove import unpickler statement from database_handler.py
 
 5) Remove unpickler.py from package
+
+6) Remove test_unpickler.py from Test package
