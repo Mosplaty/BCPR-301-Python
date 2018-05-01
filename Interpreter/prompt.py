@@ -1,5 +1,8 @@
-from cmd import Cmd
 from Interpreter.controller import Controller
+from Interpreter.database_handler import DatabaseHandler
+from Interpreter.filehandler import FileHandler
+from Interpreter.chart import Graph
+from cmd import Cmd
 from os import path
 
 
