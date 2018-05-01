@@ -3,4 +3,6 @@ Lazy Class - Pickler / Unpickler
 Commits:
 1) Copy import statements from unpickler.py to pickler.py
 
-2) Copy unpickle_dictionary function from Unpickler() to Pickler()
+2) Copy unpickle_dictionary() function from Unpickler() to Pickler()
+
+3) Replace calls to unpickler.unpickle_dictionary() with pickler.unpickle_dictionary() in controller.py
