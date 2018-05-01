@@ -4,6 +4,7 @@ Commits:
 1) Copy import statements from controller.py to prompt.py
 
 2) Remove link from Shell.do_load() -> Controller.load() and 
-	replace with Shell.do_load() -> Filehandler.read()
+	replace with Shell.do_load() -> Filehandler.set_file_type()
 
-3) 
+3) Remove link from Shell.do_load() -> Controller.validate() and
+	replace with Shell.do_load() -> FileHandler.read()
