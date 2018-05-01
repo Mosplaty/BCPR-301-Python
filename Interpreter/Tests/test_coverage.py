@@ -22,6 +22,6 @@ def suite():
     return testsuite
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     runner = TextTestRunner(verbosity=2)
     runner.run(suite())

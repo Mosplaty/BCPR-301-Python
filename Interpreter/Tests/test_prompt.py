@@ -28,11 +28,11 @@ class TestPrompt(TestCase):
         del self.expected
 
     def answer(self):
-        result = input('Enter yes or no')
-        if result == self.expected:
-            return result
+        result = input('Enter yes or no')  # pragma: no cover
+        if result == self.expected:  # pragma: no cover
+            return result  # pragma: no cover
         else:
-            return result
+            return result  # pragma: no cover
 
     def test_cd(self):
         self.expected = ['H:\\Documents\\Classes\\BCPR301 - Adv. Programming\\Assignment 2\\BCPR301_Assignment\\'
