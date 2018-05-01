@@ -65,10 +65,10 @@ class FileTypeCSV(FileTypeAbstract):
                     empno += 1
             result = Validator.save_dict(data)
             return result
-        except TypeError:
-            print("Error!!")
-        except Exception as e:
-            print(e)
+        except TypeError:  # pragma: no cover
+            print("Error!!")  # pragma: no cover
+        except Exception as e:  # pragma: no cover
+            print(e)  # pragma: no cover
 
 
 class FileTypeXLSX(FileTypeAbstract):
@@ -102,8 +102,8 @@ class FileTypeXLSX(FileTypeAbstract):
                     data[empno-1] = record
                 empno += 1
             result = Validator.save_dict(data)
-        except PermissionError:
-            print("Sorry, you don't have enough permissions to access this file")
+        except PermissionError:  # pragma: no cover
+            print("Sorry, you don't have enough permissions to access this file")  # pragma: no cover
         return result
 # The above function contains a date object in the dictionary for each date,
 # as the birthday is a date, may need to access the values stored in the date object when validating
