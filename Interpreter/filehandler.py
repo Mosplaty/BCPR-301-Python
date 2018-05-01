@@ -19,7 +19,7 @@ class FileHandler:
         if Path(self.filename).exists():
             return True
         else:
-            return False  # pragma: no cover
+            return False
 
     def set_file_type(self):
         """
@@ -121,7 +121,7 @@ class FileTypeTXT(FileTypeAbstract):
         empno = 0
         try:
 
-            for line in file: # FIRST LOOP
+            for line in file:  # FIRST LOOP
                 rows = line.split(";")
                 dictionary = dict()
                 for row in rows:
