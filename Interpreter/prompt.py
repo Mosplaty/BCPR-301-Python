@@ -15,6 +15,7 @@ class Shell(Cmd):
     def __init__(self):
         super().__init__()
         self.controller = Controller()
+        self.filehandler = None
         self.intro = "Welcome to our custom Interpreter shell. Type help or ? to list commands.\n"
         self.prompt = '>>> '
         self.file = None
@@ -65,7 +66,12 @@ class Shell(Cmd):
             try:
                 if path.isfile(path.realpath(path.join(self.directory, path.relpath(arg)))):
                     self.file = path.realpath(path.join(self.directory, path.relpath(arg)))
-                    result = self.controller.load(self.file)
+                    self.filehandler = FileHandler(self.file)
+
+                    # remove after controller.validator is not used
+                    self.controller.filehandler = self.filehandler
+
+                    result = self.filehandler.set_file_type()
                     if result:
                         self.prompt = '(Interpreter: ' + path.basename(self.file) + ') '
                         self.controller.validate()
