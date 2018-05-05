@@ -16,9 +16,11 @@ class Shell(Cmd):
         super().__init__()
         self.controller = Controller()
         self.filehandler = None
+        self.db_handler = DatabaseHandler()
         self.intro = "Welcome to our custom Interpreter shell. Type help or ? to list commands.\n"
         self.prompt = '>>> '
         self.file = None
+        self.data = None
         self.directory = path.realpath(path.curdir)
 
     def do_cd(self, arg):
@@ -70,7 +72,12 @@ class Shell(Cmd):
                     result = self.filehandler.set_file_type()
                     if result:
                         self.prompt = '(Interpreter: ' + path.basename(self.file) + ') '
-                        self.filehandler.read()
+                        validate = self.filehandler.read()
+                        self.data = validate
+
+                        # Remove after controller -> save link
+                        self.controller.data = self.data
+
                     else:
                         print("File does not exist")  # pragma: no cover
                 else:
@@ -83,8 +90,13 @@ class Shell(Cmd):
             try:
                 if db.lower() == "local":
                     db_name = input("What is the name of the database? >")
-                    self.controller.set_local(db_name)
-                    self.controller.get_local()
+                    self.db_handler.set_local(db_name)
+                    self.db_handler.insert_local_dict(self.data)
+                    self.data = self.db_handler.get_local()
+
+                    # Remove after controller -> save link
+                    self.controller.data = self.data
+
                     if self.controller.check_data():
                         print("Data has been loaded")
                     else:
@@ -210,7 +222,7 @@ class Shell(Cmd):
                 else:
                     print("invalid database type")
             except ValueError:  # pragma: no cover
-                print("Try again...")    # pragma: no cover
+                print("Try again...")  # pragma: no cover
         else:
             print("Please load data before attempting to save")
 
