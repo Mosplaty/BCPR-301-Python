@@ -8,3 +8,5 @@ Commits:
 
 3) Remove link from Shell.do_load() -> Controller.validate() and
 	replace with Shell.do_load() -> FileHandler.read()
+
+4)
