@@ -67,14 +67,10 @@ class Shell(Cmd):
                 if path.isfile(path.realpath(path.join(self.directory, path.relpath(arg)))):
                     self.file = path.realpath(path.join(self.directory, path.relpath(arg)))
                     self.filehandler = FileHandler(self.file)
-
-                    # remove after controller.validator is not used
-                    self.controller.filehandler = self.filehandler
-
                     result = self.filehandler.set_file_type()
                     if result:
                         self.prompt = '(Interpreter: ' + path.basename(self.file) + ') '
-                        self.controller.validate()
+                        self.filehandler.read()
                     else:
                         print("File does not exist")  # pragma: no cover
                 else:
