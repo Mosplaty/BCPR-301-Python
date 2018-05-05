@@ -9,4 +9,4 @@ Commits:
 3) Remove link from Shell.do_load() -> Controller.validate() and
 	replace with Shell.do_load() -> FileHandler.read()
 
-4)
+4) Replace -database local link to controller with direct links to database handler
