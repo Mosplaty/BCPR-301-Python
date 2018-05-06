@@ -17,3 +17,6 @@ Commits:
 
 6) Move method Controller.check_data() to Shell class and replace calls from 
 	Shell.do_load() -> Controller.check_data() to self.check_data()
+
+7) Replace calls from Shell.do_save() -> Controller .check_data, .set_local, .set_remote
+	Lines 221, 225, 231
