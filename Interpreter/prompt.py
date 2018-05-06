@@ -97,7 +97,7 @@ class Shell(Cmd):
                     # Remove after controller -> save link
                     self.controller.data = self.data
 
-                    if self.controller.check_data():
+                    if self.check_data():
                         print("Data has been loaded")
                     else:
                         print("No data was found")  # pragma: no cover
@@ -113,7 +113,7 @@ class Shell(Cmd):
                     # Remove after controller -> save link
                     self.controller.data = self.data
 
-                    if self.controller.check_data():
+                    if self.check_data():
                         print("Data has been loaded")
                     else:
                         print("No data was found")  # pragma: no cover
@@ -125,6 +125,11 @@ class Shell(Cmd):
                 print("No data found")
         else:
             print("Invalid command")  # pragma: no cover
+
+    def check_data(self):
+        if self.data is not None:
+            return True
+        return False
 
     def do_graph(self, arg):
         """
