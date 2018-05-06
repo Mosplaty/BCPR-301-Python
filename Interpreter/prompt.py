@@ -218,17 +218,19 @@ class Shell(Cmd):
         :return:
         """
         commands = arg.split(" ")
-        if self.controller.check_data():
+        if self.check_data():
             try:
                 if commands[0].lower() == "local":
                     db_name = input("What would you like to name the database? >")
-                    self.controller.set_local(db_name)
+                    self.db_handler.set_local(db_name)
+                    self.db_handler.insert_local_dict(self.data)
                 elif commands[0].lower() == "remote":
                     host = input("What is the hostname? >")
                     user = input("What is the username? >")
                     password = input("Input a password >")
                     db = input("What is the database name? >")
-                    self.controller.set_remote(host, user, password, db)
+                    self.db_handler.set_remote(host, user, password, db)
+                    self.db_handler.insert_remote_dict(self.data)
                 else:
                     print("invalid database type")
             except ValueError:  # pragma: no cover
