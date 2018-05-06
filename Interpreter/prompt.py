@@ -77,6 +77,7 @@ class Shell(Cmd):
 
                         # Remove after controller -> save link
                         self.controller.data = self.data
+                        print(self.data)
 
                     else:
                         print("File does not exist")  # pragma: no cover
