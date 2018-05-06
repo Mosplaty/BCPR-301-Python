@@ -87,7 +87,6 @@ class Shell(Cmd):
                 print("No path was specified, please try again")
         elif arg.lower() == "-database":
             db = input("remote or local?")
-            # if self.controller.check_data():
             try:
                 if db.lower() == "local":
                     db_name = input("What is the name of the database? >")
@@ -107,8 +106,13 @@ class Shell(Cmd):
                     user = input("What is the username? >")
                     password = input("Input a password >")
                     db = input("What is the database name? >")
-                    self.controller.set_remote(host, user, password, db)
-                    self.controller.get_remote()
+                    self.db_handler.set_remote(host, user, password, db)
+                    self.db_handler.insert_remote_dict(self.data)
+                    self.data = self.db_handler.get_remote()
+
+                    # Remove after controller -> save link
+                    self.controller.data = self.data
+
                     if self.controller.check_data():
                         print("Data has been loaded")
                     else:
