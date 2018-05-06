@@ -1,4 +1,3 @@
-from Interpreter.controller import Controller
 from Interpreter.database_handler import DatabaseHandler
 from Interpreter.filehandler import FileHandler
 from Interpreter.chart import Graph
@@ -14,7 +13,6 @@ class Shell(Cmd):
     # because it is more explicit
     def __init__(self):
         super().__init__()
-        self.controller = Controller()
         self.filehandler = None
         self.db_handler = DatabaseHandler()
         self.graph = None
