@@ -14,3 +14,6 @@ Commits:
 
 5) Replace -database remote link to controller with direct links to database handler
 	Lines 110, 111, 112
+
+6) Move method Controller.check_data() to Shell class and replace calls from 
+	Shell.do_load() -> Controller.check_data() to self.check_data()
