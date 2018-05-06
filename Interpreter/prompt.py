@@ -17,6 +17,7 @@ class Shell(Cmd):
         self.controller = Controller()
         self.filehandler = None
         self.db_handler = DatabaseHandler()
+        self.graph = None
         self.intro = "Welcome to our custom Interpreter shell. Type help or ? to list commands.\n"
         self.prompt = '>>> '
         self.file = None
@@ -149,7 +150,7 @@ class Shell(Cmd):
             try:
                 if commands[0] == "pie" or commands[0] == "scatter" or commands[0] == "bar":
                     a_path = path.join(self.directory, commands[1] + ".html")
-                    self.controller.set_graph(commands[0], a_path)
+                    self.set_graph(commands[0], a_path)
                     criteria = input("What are the criteria? ([key] [value - optional]) > ")
                     crit = criteria.split(" ")
                     if len(crit) > 1:
@@ -176,6 +177,17 @@ class Shell(Cmd):
                 print("This key is invalid")  # pragma: no cover
         else:
             print("Please set data before attempting to create a graph")
+
+    def set_graph(self, graph_type, filename):
+        print(graph_type)
+        print(filename)
+        self.graph = Graph()
+
+        # remove after links to controller.graph deleted
+        self.controller.graph = self.graph
+
+        data = self.data
+        self.graph.set_data(data, graph_type, filename)
 
     def do_quit(self, arg):
         """
