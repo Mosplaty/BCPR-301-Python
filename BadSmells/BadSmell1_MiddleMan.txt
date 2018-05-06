@@ -20,3 +20,15 @@ Commits:
 
 7) Replace calls from Shell.do_save() -> Controller .check_data, .set_local, .set_remote
 	Lines 221, 225, 231
+
+8) Move method Controller.set_graph() to Shell class and replace calls from 
+	Shell.do_graph -> Controller.set_graph() to self.set_graph()
+	Line: 153	
+
+9) Replace calls from Shell.do_graph() -> Controller .check_data(), .set_criteria(), 
+	.set_keys(), .draw()
+	Lines: 149, 157, 159, 163, 165, 168, 170
+
+PENDING) Remove "self.controller.data = self.data" now that do_save() AND
+	do_graph() have no controller link
+	Lines: 80, 99, 115
