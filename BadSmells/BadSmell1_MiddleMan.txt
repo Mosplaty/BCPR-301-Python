@@ -33,4 +33,4 @@ Commits:
 	do_graph() have no controller link
 	Lines: 80, 99, 115, 187
 
-11) 
+11) Remove import link to controller from prompt.py and Shell.controller = Controller()
