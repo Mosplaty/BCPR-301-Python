@@ -26,14 +26,18 @@ class FileHandler:
         Will get the file type and will create the
         corresponding solid class and set it to self.file_type
         """
-        suffix = PurePosixPath(self.filename).suffix
-        print(suffix)
-        file_types = {
-            '.csv': FileTypeCSV(),
-            '.xlsx': FileTypeXLSX(),
-            '.txt': FileTypeTXT()
-        }
-        self.file_type = file_types[suffix]
+        if self.file_exist() is True:
+            suffix = PurePosixPath(self.filename).suffix
+            print(suffix)
+            file_types = {
+                '.csv': FileTypeCSV(),
+                '.xlsx': FileTypeXLSX(),
+                '.txt': FileTypeTXT()
+            }
+            self.file_type = file_types[suffix]
+            return True
+        else:
+            return False
 
     def read(self):
         return self.file_type.read(self.filename)

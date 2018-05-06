@@ -1,0 +1,36 @@
+Middle Man - Controller
+
+Commits:
+1) Copy import statements from controller.py to prompt.py
+
+2) Remove link from Shell.do_load() -> Controller.load() and 
+	replace with Shell.do_load() -> Filehandler.set_file_type()
+
+3) Remove link from Shell.do_load() -> Controller.validate() and
+	replace with Shell.do_load() -> FileHandler.read()
+
+4) Replace -database local link to controller with direct links to database handler
+	Lines 94, 95, 96
+
+5) Replace -database remote link to controller with direct links to database handler
+	Lines 110, 111, 112
+
+6) Move method Controller.check_data() to Shell class and replace calls from 
+	Shell.do_load() -> Controller.check_data() to self.check_data()
+
+7) Replace calls from Shell.do_save() -> Controller .check_data, .set_local, .set_remote
+	Lines 221, 225, 231
+
+8) Move method Controller.set_graph() to Shell class and replace calls from 
+	Shell.do_graph -> Controller.set_graph() to self.set_graph()
+	Line: 153	
+
+9) Replace calls from Shell.do_graph() -> Controller .check_data(), .set_criteria(), 
+	.set_keys(), .draw()
+	Lines: 149, 157, 159, 163, 165, 168, 170
+
+10) Remove "self.controller.data = self.data" now that do_save() AND
+	do_graph() have no controller link
+	Lines: 80, 99, 115, 187
+
+11) Remove import link to controller from prompt.py and Shell.controller = Controller()
