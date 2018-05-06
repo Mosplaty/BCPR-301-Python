@@ -75,9 +75,6 @@ class Shell(Cmd):
                         self.prompt = '(Interpreter: ' + path.basename(self.file) + ') '
                         validate = self.filehandler.read()
                         self.data = validate
-
-                        # Remove after controller -> save link
-                        self.controller.data = self.data
                         print(self.data)
 
                     else:
@@ -94,10 +91,6 @@ class Shell(Cmd):
                     self.db_handler.set_local(db_name)
                     self.db_handler.insert_local_dict(self.data)
                     self.data = self.db_handler.get_local()
-
-                    # Remove after controller -> save link
-                    self.controller.data = self.data
-
                     if self.check_data():
                         print("Data has been loaded")
                     else:
@@ -110,10 +103,6 @@ class Shell(Cmd):
                     self.db_handler.set_remote(host, user, password, db)
                     self.db_handler.insert_remote_dict(self.data)
                     self.data = self.db_handler.get_remote()
-
-                    # Remove after controller -> save link
-                    self.controller.data = self.data
-
                     if self.check_data():
                         print("Data has been loaded")
                     else:
@@ -182,10 +171,6 @@ class Shell(Cmd):
         print(graph_type)
         print(filename)
         self.graph = Graph()
-
-        # remove after links to controller.graph deleted
-        self.controller.graph = self.graph
-
         data = self.data
         self.graph.set_data(data, graph_type, filename)
 
