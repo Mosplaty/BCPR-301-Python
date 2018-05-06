@@ -146,7 +146,7 @@ class Shell(Cmd):
             The graph
         """
         commands = arg.split(" ")
-        if self.controller.check_data():
+        if self.check_data():
             try:
                 if commands[0] == "pie" or commands[0] == "scatter" or commands[0] == "bar":
                     a_path = path.join(self.directory, commands[1] + ".html")
@@ -154,20 +154,20 @@ class Shell(Cmd):
                     criteria = input("What are the criteria? ([key] [value - optional]) > ")
                     crit = criteria.split(" ")
                     if len(crit) > 1:
-                        self.controller.set_criteria(crit[0], crit[1])
+                        self.graph.set_criteria(crit[0], crit[1])
                     else:
-                        self.controller.set_criteria(crit[0])
+                        self.graph.set_criteria(crit[0], None)
                     keys = input("What keys to use? ([key1] [key2]) > ")
                     a_key = keys.split(" ")
                     if len(a_key) > 1:
-                        self.controller.set_keys(a_key[0], a_key[1])
+                        self.graph.set_keys(a_key[0], a_key[1])
                     else:
-                        self.controller.set_keys(a_key[0])
+                        self.graph.set_keys(a_key[0], None)
                     title = input("What is the title? >")
                     if len(a_key) > 1:
-                        self.controller.draw(a_key[0], a_key[1], title)
+                        self.graph.draw(a_key[0], a_key[1], title)
                     else:
-                        self.controller.draw(a_key[0], a_key[0], title)
+                        self.graph.draw(a_key[0], a_key[0], title)
 
                 else:
                     print("filename is invalid")
