@@ -31,4 +31,4 @@ Commits:
 
 PENDING) Remove "self.controller.data = self.data" now that do_save() AND
 	do_graph() have no controller link
-	Lines: 80, 99, 115
+	Lines: 80, 99, 115, 187
