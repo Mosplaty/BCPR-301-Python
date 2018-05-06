@@ -10,3 +10,7 @@ Commits:
 	replace with Shell.do_load() -> FileHandler.read()
 
 4) Replace -database local link to controller with direct links to database handler
+	Lines 94, 95, 96
+
+5) Replace -database remote link to controller with direct links to database handler
+	Lines 110, 111, 112
