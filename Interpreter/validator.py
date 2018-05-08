@@ -1,5 +1,6 @@
 import re
 from copy import deepcopy
+from abc import ABCMeta, abstractmethod
 from datetime import datetime, date
 
 
@@ -137,6 +138,15 @@ class Validator:
     def checker(row):
         result = True
         for key, value in row.items():
+            value = str(value)
+            checker_keys = {'ID': a.check_empid(value),
+                            'Gender': a.check_gender(value),
+                            'Age': a.check_age(value),
+                            'Sales': a.check_sales(value),
+                            'BMI': a.check_BMI(value),
+                            'Salary': a.check_salary(value),
+                            'Birthday': a.check_birthday(value)
+                            }
             if key == "ID":
                 if a.check_empid(value) is False:
                     result = False
