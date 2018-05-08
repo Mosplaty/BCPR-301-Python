@@ -148,51 +148,56 @@ class Validator:
                             'Birthday': a.check_birthday(value)
                             }
             try:
-                if key == "ID":
-                    if a.check_empid(value) is False:
-                        result = False
-                        return result
-                    else:
-                        a.push_value(key, a.check_empid(value))
-                elif key == "Gender":
-                    if a.check_gender(value) is False:
-                        result = False
-                        return result
-                    else:
-                        a.push_value(key, a.check_gender(value))
-                elif key == "Age":
-                    if a.check_age(value) is False:
-                        result = False
-                        return result
-                    else:
-                        a.push_value(key, a.check_age(value))
-                elif key == "Sales":
-                    if a.check_sales(value) is False:
-                        result = False
-                        return result
-                    else:
-                        a.push_value(key, a.check_sales(value))
-                elif key == "BMI":
-                    if a.check_BMI(value) is False:
-                        result = False
-                        return result
-                    else:
-                        a.push_value(key, a.check_BMI(value))
-                elif key == "Salary":
-                    if a.check_salary(value) is False:
-                        result = False
-                        return result
-                    else:
-                        a.push_value(key, a.check_salary(value))
-                elif key == "Birthday":
-                    if a.check_birthday(value) is False:
-                        result = False
-                        return result
-                    else:
-                        a.push_value(key, a.check_birthday(value))
+                # if key == "ID":
+                #     if a.check_empid(value) is False:
+                #         result = False
+                #         return result
+                #     else:
+                #         a.push_value(key, a.check_empid(value))
+                # elif key == "Gender":
+                #     if a.check_gender(value) is False:
+                #         result = False
+                #         return result
+                #     else:
+                #         a.push_value(key, a.check_gender(value))
+                # elif key == "Age":
+                #     if a.check_age(value) is False:
+                #         result = False
+                #         return result
+                #     else:
+                #         a.push_value(key, a.check_age(value))
+                # elif key == "Sales":
+                #     if a.check_sales(value) is False:
+                #         result = False
+                #         return result
+                #     else:
+                #         a.push_value(key, a.check_sales(value))
+                # elif key == "BMI":
+                #     if a.check_BMI(value) is False:
+                #         result = False
+                #         return result
+                #     else:
+                #         a.push_value(key, a.check_BMI(value))
+                # elif key == "Salary":
+                #     if a.check_salary(value) is False:
+                #         result = False
+                #         return result
+                #     else:
+                #         a.push_value(key, a.check_salary(value))
+                # elif key == "Birthday":
+                #     if a.check_birthday(value) is False:
+                #         result = False
+                #         return result
+                #     else:
+                #         a.push_value(key, a.check_birthday(value))
+                # else:
+                #     result = False
+                #     return result
+                result = checker_keys[key]
+                if result is False:
+                    return False
                 else:
-                    result = False
-                    return result
+                    a.push_value(key, result)
             except Exception as e:
                 print(e)
                 return False
