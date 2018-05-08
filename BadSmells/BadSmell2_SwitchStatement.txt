@@ -9,4 +9,8 @@ Commits:
 	Lines: 150, 196 - 198
 
 3) Replace switch cases with checker requiring a check using the dictionary 
-	Lines: 161 - 200
+	and comment lines from old function
+	Lines: 151 - 200
+
+4) Remove commented lines from validator and check new method is functional
+	Lines: 151 - 192
