@@ -7,3 +7,6 @@ Commits:
 
 2) Encapsulate switch case in try-except statement
 	Lines: 150, 196 - 198
+
+3) Replace switch cases with checker requiring a check using the dictionary 
+	Lines: 161 - 200
