@@ -5,3 +5,5 @@ Commits:
 	and ensure $value is a string
 	Lines: 141 - 149
 
+2) Encapsulate switch case in try-except statement
+	Lines: 150, 196 - 198
