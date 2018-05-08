@@ -1,0 +1,7 @@
+Switch Statement - Validator
+
+Commits:
+1) Add new dictionary for each key with its value as the corresponding check function
+	and ensure $value is a string
+	Lines: 141 - 149
+
