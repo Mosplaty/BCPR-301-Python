@@ -1,0 +1,16 @@
+Switch Statement - Validator
+
+Commits:
+1) Add new dictionary for each key with its value as the corresponding check function
+	and ensure $value is a string
+	Lines: 141 - 149
+
+2) Encapsulate switch case in try-except statement
+	Lines: 150, 196 - 198
+
+3) Replace switch cases with checker requiring a check using the dictionary 
+	and comment lines from old function
+	Lines: 151 - 200
+
+4) Remove commented lines from validator and check new method is functional
+	Lines: 151 - 192

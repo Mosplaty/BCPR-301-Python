@@ -1,5 +1,6 @@
 import re
 from copy import deepcopy
+from abc import ABCMeta, abstractmethod
 from datetime import datetime, date
 
 
@@ -137,51 +138,24 @@ class Validator:
     def checker(row):
         result = True
         for key, value in row.items():
-            if key == "ID":
-                if a.check_empid(value) is False:
-                    result = False
-                    return result
+            value = str(value)
+            checker_keys = {'ID': a.check_empid(value),
+                            'Gender': a.check_gender(value),
+                            'Age': a.check_age(value),
+                            'Sales': a.check_sales(value),
+                            'BMI': a.check_BMI(value),
+                            'Salary': a.check_salary(value),
+                            'Birthday': a.check_birthday(value)
+                            }
+            try:
+                result = checker_keys[key]
+                if result is False:
+                    return False
                 else:
-                    a.push_value(key, a.check_empid(value))
-            elif key == "Gender":
-                if a.check_gender(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_gender(value))
-            elif key == "Age":
-                if a.check_age(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_age(value))
-            elif key == "Sales":
-                if a.check_sales(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_sales(value))
-            elif key == "BMI":
-                if a.check_BMI(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_BMI(value))
-            elif key == "Salary":
-                if a.check_salary(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_salary(value))
-            elif key == "Birthday":
-                if a.check_birthday(value) is False:
-                    result = False
-                    return result
-                else:
-                    a.push_value(key, a.check_birthday(value))
-            else:
-                result = False
-                return result
+                    a.push_value(key, result)
+            except Exception as e:
+                print(e)
+                return False
 
     @staticmethod
     def save_dict(loaded_dict):
